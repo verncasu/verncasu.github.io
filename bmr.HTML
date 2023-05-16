@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BMR 計算器</title>
+    <script>
+      function calculateBMR() {
+        var weight = parseFloat(document.getElementById("weight").value);
+        var height = parseFloat(document.getElementById("height").value);
+        var age = parseInt(document.getElementById("age").value);
+        var gender = document.getElementById("gender").value;
+
+        var bmr;
+
+        if (gender === "male") {
+          bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+        } else if (gender === "female") {
+          bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+        } else {
+          alert("請選擇性別");
+          return;
+        }
+
+        document.getElementById("result").innerHTML = "您的 BMR 是：" + bmr.toFixed(2) + " 卡路里";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>BMR 計算器</h1>
+
+    <label for="weight">體重（公斤）：</label>
+    <input type="number" id="weight" required /><br />
+
+    <label for="height">身高（公分）：</label>
+    <input type="number" id="height" required /><br />
+
+    <label for="age">年齡：</label>
+    <input type="number" id="age" required /><br />
+
+    <label for="gender">性別：</label>
+    <select id="gender">
+      <option value="">請選擇</option>
+      <option value="male">男性</option>
+      <option value="female">女性</option>
+    </select><br />
+
+    <button onclick="calculateBMR()">計算</button>
+
+    <div id="result"></div>
+  </body>
+</html>
